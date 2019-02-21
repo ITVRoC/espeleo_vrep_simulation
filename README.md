@@ -2,13 +2,13 @@
 ----------------------
 This repository contains all needed files for simulating EspeleoRobo in V-REP.
 
-### EspeleoRobo models included:
+## EspeleoRobo models included:
 - 6 legs
 - 6 wheels
 - 6 star shaped wheels
 - 4 wheels and 2 legs
 
-### How to interact
+## How to interact
 
 The simulated models behave like the real robot, emulating its topics and services in ROS.
 
@@ -21,12 +21,12 @@ The simulated models behave like the real robot, emulating its topics and servic
 - `/vrep_ros_interface/ros_eposmcd/request_position`  (message type:`ros_eposmcd_msgs/maxon_telemetry`): Request a desired motor angular position in **[rad]**.
 - `/vrep_ros_interface/ros_eposmcd/request_velocity`  (message type:`ros_eposmcd_msgs/maxon_telemetry`): Request a desired motor velocity in **[rad/s]**.
 
-### V-REP
+## V-REP
 
 - The models are natively compatible with V-REP 3.5.0 (rev.6)(serialization version 21).
 - You can find how to install V-REP and configure the ROS interface in  [our wiki](https://github.com/ITVRoC/general-wiki/wiki).
 
-### Configuring this package
+## Configuring this package
 
 Before configuring this package, it is necessary that you have already configured your **ROS**, **V-REP** and **vrep_ros_interface** environments.  A quick tutorial is available in the previous section.
 
@@ -64,7 +64,7 @@ $ catkin build
 
 9- Now, run the ROS master, open V-REP, load any EspeleoRobô model, play the scene and check if the topics have appeared, indicating that you are good to go!
 
-### Contact
+## Contact
 
 Any questions, please contact-me in ``f.rocha41@gmail.com``.
 All pull requests are welcome and desired!!!
