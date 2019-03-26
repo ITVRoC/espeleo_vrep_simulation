@@ -23,7 +23,7 @@ The simulated models behave like the real robot, emulating its topics and servic
 
 ## V-REP
 
-- The models are natively compatible with V-REP 3.5.0 (rev.6)(serialization version 21).
+- The models are natively compatible with V-REP 3.6.1 (rev. 1). Retrocompatibility may work, but is not officially supported.
 - You can find how to install V-REP and configure the ROS interface in  [our wiki](https://github.com/ITVRoC/general-wiki/wiki).
 
 ## Configuring this package
