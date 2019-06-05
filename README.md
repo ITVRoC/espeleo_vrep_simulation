@@ -7,6 +7,9 @@ This repository contains all needed files for simulating EspeleoRobo in V-REP.
 - 6 wheels
 - 6 star shaped wheels
 - 4 wheels and 2 legs
+- 4 wheels 2 legs plus imu and kinect
+- 4 wheels 2 legs plus imu and velodyne
+
 
 ## How to interact
 
