@@ -10,6 +10,11 @@ This repository contains all needed files for simulating EspeleoRobo in V-REP.
 - 4 wheels 2 legs plus imu and kinect
 - 4 wheels 2 legs plus imu and velodyne
 
+## Scenes included:
+- tube (cylinder) plus espeleorobo
+- terrain plus tree plus espeleorobo
+- paleotoca
+
 
 ## How to interact
 

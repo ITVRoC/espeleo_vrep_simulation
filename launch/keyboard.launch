@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<launch>
+
+
+<!--Run the rviz for better visualization-->
+<node pkg = "rviz" name = "rviz" type = "rviz" args="-d $(find espeleo_planning)/rviz/config_cylinder.rviz" output="screen">
+</node>
+
+<!--Run the node that plots stuff on rviz-->
+<node pkg = "espeleo_planning" name = "config" type = "config_rviz_basic.py" args="" output="screen">
+</node>
+
+
+<!--Run the controller node -->
+<node pkg = "espeleo_planning" name = "controller" type = "control_motors.py" args="" output="screen">
+</node>
+
+
+<!--Run the imu node -->
+<node pkg = "espeleo_planning" name = "imu_node" type = "imu_node.py" args="" output="screen">
+</node>
+
+
+<!--Run the teleop key of the turtlesim package-->
+<node pkg = "turtlesim" name = "keyboard" type = "turtle_teleop_key" args="" output="screen">
+	<remap from="/turtle1/cmd_vel" to="/cmd_vel"/>
+</node>
+
+
+
+</launch>

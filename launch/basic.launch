@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<launch>
+
+
+<!--Run the rviz for better visualization-->
+<node pkg = "rviz" name = "rviz" type = "rviz" args="-d $(find ros_sim_espeleo)/rviz/config_basic.rviz" output="screen">
+</node>
+
+<!--Run the node that plots stuff on rviz-->
+<node pkg = "ros_sim_espeleo" name = "config" type = "config_rviz_basic.py" args="" output="screen">
+</node>
+
+
+<!--Run the node that controls the wheels -->
+<node pkg = "espeleo_control" name = "controller" type = "control_motors.py" args="" output="screen">
+</node>
+
+
+<!--Run the node that constructs a imu_raw topic -->
+<node pkg = "espeleo_localization" name = "imu_basic_node" type = "imu_basic_node.py" args="" output="screen">
+</node>
+
+
+<!--Run the node that controls the robot with vector fields -->
+<node pkg = "espeleo_control" name = "vector_field" type = "vec_field_control.py" args="" output="screen">
+</node>
+
+
+<!--Run the node that computes a orientation -->
+<node pkg = "imu_complementary_filter" name = "complementary_filter_node" type = "complementary_filter_node" args="" output="screen">
+<remap from="imu/data_raw" to="/espeleo/imu_raw"/>
+</node>
+
+
+
+</launch>
