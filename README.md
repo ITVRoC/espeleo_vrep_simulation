@@ -29,6 +29,27 @@ The simulated models behave like the real robot, emulating its topics and servic
 - `/vrep_ros_interface/ros_eposmcd/request_position`  (message type:`ros_eposmcd_msgs/maxon_telemetry`): Request a desired motor angular position in **[rad]**.
 - `/vrep_ros_interface/ros_eposmcd/request_velocity`  (message type:`ros_eposmcd_msgs/maxon_telemetry`): Request a desired motor velocity in **[rad/s]**.
 
+
+## How to interact - imu_basic_node.py
+
+This script constructs a ross message that simulates a imu
+
+- `/sensors/acc`  (message type:`geometry_msgs/Point`): Receives data from the accelerometer simulated inside vrep.
+- `/espeleo/odom`  (message type:`geometry_msgs/Point`): Receives data from the gyro simulated inside vrep.
+- `/espeleo/imu_raw`  (message type:`geometry_msgs/Point`): Publish a message that simulates a imu raw data (accelerometer and gyro)
+
+
+
+## Launch files
+
+The following scripts must be calles after the roscore and vrep are runned (in this order)
+
+**Topics:**
+
+- `basic.launch`: This script runs the most basic files that preares the robot to receive a reference path.
+- `keyboard.launch`: This script runs the basic files to enable to robot be controlled with the keyboard.
+
+
 ## V-REP
 
 - The models are natively compatible with V-REP 3.6.1 (rev. 1). Retrocompatibility may work, but is not officially supported.
