@@ -147,11 +147,8 @@ def imunode():
         imu_msg.linear_acceleration_covariance = [0.2, 0.1, 0.1, 0.1, 0.2, 0.1, 0.1, 0.1, 0.2]
 
         pub_imu.publish(imu_msg)
-
-
-
-
-		"""
+        
+        """
         # Create odom message
         odom_msg.header.stamp = rospy.Time.now();
         #odom_msg.pose.pose.position.x = p[0]
@@ -164,7 +161,7 @@ def imunode():
 
         #Publish odom message
         pub_odom.publish(odom_msg)
-		"""
+        """
 
         rate.sleep()
 

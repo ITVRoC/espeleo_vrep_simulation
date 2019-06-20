@@ -4,11 +4,11 @@
 
 
 <!--Run the rviz for better visualization-->
-<node pkg = "rviz" name = "rviz" type = "rviz" args="-d $(find ros_sim_espeleo)/rviz/config_basic.rviz" output="screen">
+<node pkg = "rviz" name = "rviz" type = "rviz" args="-d $(find espeleo_vrep_simulation)/rviz/config_basic.rviz" output="screen">
 </node>
 
 <!--Run the node that plots stuff on rviz-->
-<node pkg = "ros_sim_espeleo" name = "config" type = "config_rviz_basic.py" args="" output="screen">
+<node pkg = "espeleo_vrep_simulation" name = "config" type = "config_rviz_basic.py" args="" output="screen">
 </node>
 
 
