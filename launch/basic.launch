@@ -18,8 +18,10 @@
 
 
 <!--Run the node that constructs a imu_raw topic -->
-<node pkg = "espeleo_localization" name = "imu_basic_node" type = "imu_basic_node.py" args="" output="screen">
+<node pkg = "espeleo_vrep_simulation" name = "imu_basic_node" type = "imu_basic_node.py" args="" output="screen">
 </node>
+<!--node pkg = "espeleo_localization" name = "imu_basic_node" type = "imu_basic_node.py" args="" output="screen">
+</node-->
 
 
 <!--Run the node that controls the robot with vector fields -->
