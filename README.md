@@ -14,6 +14,7 @@ This repository contains all needed files for simulating EspeleoRobo in V-REP.
 - tube (cylinder) plus espeleorobo
 - terrain plus tree plus espeleorobo
 - paleotoca
+- campinho (Motocross field)
 
 
 ## How to interact
