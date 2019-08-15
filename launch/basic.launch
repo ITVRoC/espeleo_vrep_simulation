@@ -24,8 +24,8 @@
 </node-->
 
 
-<!--Run the node that controls the robot with vector fields -->
-<node pkg = "espeleo_control" name = "vector_field" type = "vec_field_control.py" args="" output="screen">
+<!--Run the node that controls the robot with vector fields -->                 <!--v_r-->
+<node pkg = "espeleo_control" name = "vector_field" type = "vec_field_control.py" args="0.21" output="screen">
 </node>
 
 
