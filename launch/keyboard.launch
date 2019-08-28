@@ -29,4 +29,14 @@
 
 
 
+
+
+<!--Run the node that computes a orientation -->
+<node pkg = "imu_complementary_filter" name = "complementary_filter_node" type = "complementary_filter_node" args="" output="screen">
+<remap from="imu/data_raw" to="/espeleo/imu_raw"/>
+</node>
+
+
+
+
 </launch>
