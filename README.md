@@ -94,8 +94,8 @@ Before configuring this package, it is necessary that you have already configure
 3- If you do not have CAN driver files installed, delete the folder ``../src/ros_eposmcd/ros_eposmcd_driver``.
 
 4- Add the following lines:
--- in ``../src/vrep_ros_interface/meta/messages.txt`` you should add ``ros_eposmcd_msgs/movement``.
--- in ``../src/vrep_ros_interface/meta/services.txt`` you should add ``ros_eposmcd_msgs/maxon_telemetry``.
+- in ``../src/vrep_ros_interface/meta/messages.txt`` you should add ``ros_eposmcd_msgs/movement``.
+- in ``../src/vrep_ros_interface/meta/services.txt`` you should add ``ros_eposmcd_msgs/maxon_telemetry``.
 
 5- In `../src/vrep_ros_interface/CMakeLists.txt`, add the ``ros_eposmcd_msgs`` dependecy inside:
 e.g.:

@@ -45,6 +45,7 @@
 </node-->
 <!--Run the node that performs an EKF filter for pose estimation -->
 <node pkg = "espeleo_localization" name = "state_estimator_espeleo" type = "state_estimator_espeleo" args="" output="screen" >
+	<param name="log_path" type="string" value="$(find espeleo_localization)/log_files/" />
 </node>
 
 <!--launch-prefix="xterm -e"-->

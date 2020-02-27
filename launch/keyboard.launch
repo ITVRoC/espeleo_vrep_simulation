@@ -8,7 +8,7 @@
 </node>
 
 <!--Run the node that plots stuff on rviz-->
-<node pkg = "espeleo_planning" name = "config" type = "config_rviz_basic.py" args="" output="screen">
+<node pkg = "espeleo_vrep_simulation" name = "config" type = "config_rviz_basic.py" args="" output="screen">
 </node>
 
 
@@ -46,6 +46,7 @@
 </node-->
 <!--Run the node that performs an EKF filter for pose estimation -->
 <node pkg = "espeleo_localization" name = "state_estimator_espeleo" type = "state_estimator_espeleo" args="" output="screen" >
+	<param name="log_path" type="string" value="$(find espeleo_localization)/log_files/" />
 </node>
 
 
