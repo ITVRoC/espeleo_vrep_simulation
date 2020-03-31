@@ -6,14 +6,16 @@ from nav_msgs.msg import Odometry
 from math import sqrt, atan2, exp, atan, cos, sin, acos, pi, asin, atan2, tan
 from tf.transformations import euler_from_quaternion, quaternion_from_euler
 from time import sleep
-# from visualization_msgs.msg import Marker, MarkerArray
-# import tf
-# from tf2_msgs.msg import TFMessage
+from tf2_msgs.msg import TFMessage
+from sensor_msgs.msg import NavSatFix
 import numpy as np
+
+import sys
+
 
 
 """
-Universidade Federal de Minas Gerais (UFMG) - 2019
+Universidade Federal de Minas Gerais (UFMG) - 2020
 Laboraorio CORO
 Instituto Tecnologico Vale (ITV)
 Contact:
@@ -47,43 +49,48 @@ def callback_gyro(data):
 # ----------  ----------  ----------  ----------  ----------
 
 
+# Callback to get the pose of the robot
+def callback_pose_tf(data):
 
-# Compute the jacobian of representation
-def Jacobian_of_reprsentation(rpy):
+    global gps
 
-    Jr = np.array([[1, sin(rpy[0])*tan(rpy[1]), cos(rpy[0])*tan(rpy[1])],
-                    [0, cos(rpy[0]), -sin(rpy[0])],
-                    [0, sin(rpy[0])/cos(rpy[1]), cos(rpy[0])/cos(rpy[1])]])
 
-    return Jr
+    for T in data.transforms:
+        # Chose the transform of the EspeleoRobo
+        if (T.child_frame_id == "EspeleoRobo"):
+
+            # Get the position
+            pos_xyz = [0.0, 0.0, 0.0]
+            pos_xyz[0] = T.transform.translation.x
+            pos_xyz[1] = T.transform.translation.y
+            pos_xyz[2] = T.transform.translation.z
+
+            gps = get_gps(pos_xyz)
+
+    return
 # ----------  ----------  ----------  ----------  ----------
 
 
-# Filter for orientation from imu
-def filter(R, q, rpy, accel, gyro):
-
-    global freq
-
-    #print "rpy = \n", rpy, "\n"
-
-    Jr = Jacobian_of_reprsentation(rpy)
-
-    rpy = rpy + np.dot(Jr,np.array([[gyro[0]],[gyro[1]],[gyro[2]]]))*(1.0/freq)
-
-    inov_phi = -sin(atan2(accel[1], accel[2]) - rpy[0])
-    inov_theta = sin(asin(accel[0]/g) - rpy[1])
-
-    rpy[0] = rpy[0] + 0.1*inov_phi
-    rpy[1] = rpy[1] + 0.1*inov_theta
 
 
-    q = np.array(quaternion_from_euler(float(rpy[0]),float(rpy[1]),float(rpy[2])))
 
-    rpy_temp = euler_from_quaternion(q.tolist())
-    rpy = np.array([[rpy_temp[0]],[rpy_temp[1]],[rpy_temp[2]]])
 
-    return (R, q, rpy)
+
+# Function that compute gps states given position states
+def get_gps(pos):
+
+    global LON_0, LAT_0, ALT_0, EARTH_RADIUS, RAD_TO_DEGREE
+
+    gps_ = [0.0, 0.0, 0.0]
+
+    gps_[0] = LON_0 + RAD_TO_DEGREE*pos[0]/EARTH_RADIUS
+    gps_[1] = LAT_0 + RAD_TO_DEGREE*pos[1]/EARTH_RADIUS
+    gps_[2] = ALT_0 + pos[2]
+
+    return gps_
 # ----------  ----------  ----------  ----------  ----------
+
+
 
 
 
@@ -98,33 +105,29 @@ def imunode():
     q = np.array([0,0,0,1])
     rpy = np.array([[0],[0],[0]])
 
-
     imu_msg = Imu()
-    imu_msg.header.frame_id = "EspeleoRobo"
+    imu_msg.header.frame_id = "/imu"
     #imu_msg.header.frame_id = "world"
 
     odom_msg = Odometry()
     odom_msg.header.frame_id = "world"
     odom_msg.child_frame_id = "EspeleoRobo"
 
+    gps_msg = NavSatFix()
+    gps_msg.header.frame_id = "/imu"
 
-    pub_imu = rospy.Publisher("/espeleo/imu_raw", Imu, queue_size=1)
-    #pub_imu = rospy.Publisher("/imu/data_raw", Imu, queue_size=1)
-    #pub_odom = rospy.Publisher("/espeleo/odom", Odometry, queue_size=1)
-    rospy.init_node("ellipse")
+
+    pub_imu = rospy.Publisher("/imu/raw", Imu, queue_size=1)
+    pub_gps = rospy.Publisher("/fix", NavSatFix, queue_size=1)
+    rospy.init_node("xsens_emulator")
     rospy.Subscriber("/sensors/acc", Point, callback_acc)
     rospy.Subscriber("/sensors/gyro", Point, callback_gyro)
-
-    # pub_rviz_ref = rospy.Publisher("/visualization_marker_ref", Marker, queue_size=1) #rviz marcador de velocidade de referencia
-    # pub_rviz_pose = rospy.Publisher("/visualization_marker_pose", Marker, queue_size=1) #rviz marcador de velocidade do robo
-    # pub_rviz_ellipse = rospy.Publisher("/visualization_marker_array", MarkerArray, queue_size=1) #rviz array de marcadores no espaco da elipse
+    rospy.Subscriber("/tf", TFMessage, callback_pose_tf) # ground thruth - from tf transform
 
     rate = rospy.Rate(freq)
 
-    #pointsMarker = send_ellipse_to_rviz()
-
     sleep(0.5)
-    print "IMU initialized!"
+    print "\33[92mXsens emulator initialized!\33[0m"
 
 
     i = 0;
@@ -133,8 +136,8 @@ def imunode():
         i = i + 1
         time = i / float(freq)
 
+        #Publish imu data
         imu_msg.header.stamp = rospy.Time.now();
-
 
         imu_msg.angular_velocity.x = gyro[0]
         imu_msg.angular_velocity.y = gyro[1]
@@ -147,6 +150,18 @@ def imunode():
         imu_msg.linear_acceleration_covariance = [0.2, 0.1, 0.1, 0.1, 0.2, 0.1, 0.1, 0.1, 0.2]
 
         pub_imu.publish(imu_msg)
+
+        # ----------  ----------  ----------  ----------  ----------
+
+        #Publish gps data
+        gps_msg.header.stamp = rospy.Time.now()
+        gps_msg.latitude = gps[1]
+        gps_msg.longitude = gps[0]
+        gps_msg.altitude = gps[2]
+
+        pub_gps.publish(gps_msg)
+
+        # ----------  ----------  ----------  ----------  ----------
 
         """
         # Create odom message
@@ -178,15 +193,37 @@ def imunode():
 # Funcao inicial
 if __name__ == '__main__':
 
+    global LON_0, LAT_0, ALT_0
+    try:
+        print "\33[93mLoad initial geolocation: successful\33[0m"
+        LON_0 = float(sys.argv[2]) #degrees
+        LAT_0 = float(sys.argv[1]) #degrees
+        ALT_0 = float(sys.argv[3]) #meters
+    except:
+        LON_0 = -43.0 #degrees
+        LAT_0 = -19.0 #degrees
+        ALT_0 = 800.0 #meters
+        print "\33[91mFailed to load parameters for initial geolocation !\33[0m"
+        print "\33[93mUsing default:\nLAT_0 = -19.0\nLON_0 = -43.0\nALT_0 = 800.0\n\33[0m"
+
+
+    global EARTH_RADIUS, RAD_TO_DEGREE
+    EARTH_RADIUS = 6367444.5
+    RAD_TO_DEGREE = 180.0/3.1415926535
+
     global g
     g = 9.81
 
     global freq
-    freq = 20.0
+    freq = 50.0
 
-    global accel, gyro
+    global accel, gyro, gps
     accel = [0, 0, -9.81]
     gyro = [0, 0, 0]
+    gps = get_gps([0.0,0.0,0.0])
+
+
+
 
     try:
         imunode()

@@ -14,26 +14,40 @@
 
 <!--Run the node that controls the wheels -->
 <node pkg = "espeleo_control" name = "controller" type = "control_motors.py" args="" output="screen">
+	<rosparam command="load" file="$(find espeleo_control)/config/control_params.yaml" />
 </node>
 
 
 <!--Run the node that constructs a imu_raw topic -->
-<node pkg = "espeleo_vrep_simulation" name = "imu_basic_node" type = "imu_basic_node.py" args="" output="screen">
-</node>
-<!--node pkg = "espeleo_localization" name = "imu_basic_node" type = "imu_basic_node.py" args="" output="screen">
+<!--node pkg = "espeleo_vrep_simulation" name = "imu_basic_node" type = "imu_basic_node.py" args="" output="screen">
 </node-->
+																																														<!-- LAT LON ALT -->
+<node pkg = "espeleo_vrep_simulation" name = "xsens_emulator" type = "xsens_emulator.py" args="-19.869645 -43.958060 840.0" output="screen">
+	<!--rosparam command="load" file="$(find espeleo_vrep_simulation)/config/sim_params.yaml" /-->
+</node>
 
 
-<!--Run the node that controls the robot with vector fields -->                 <!--v_r-->
-<node pkg = "espeleo_control" name = "vector_field" type = "vec_field_control.py" args="0.21" output="screen">
+<!--Run the node that controls the robot with vector fields -->
+<node pkg = "espeleo_control" name = "vector_field" type = "vec_field_control.py" args="" output="screen">
+	<rosparam command="load" file="$(find espeleo_control)/config/control_params.yaml" />
 </node>
 
 
 <!--Run the node that computes a orientation -->
 <node pkg = "imu_complementary_filter" name = "complementary_filter_node" type = "complementary_filter_node" args="" output="screen">
-<remap from="imu/data_raw" to="/espeleo/imu_raw"/>
+<remap from="imu/data_raw" to="/imu/raw"/>
 </node>
 
 
+
+<!--Run the node that performs avery simple pose constructor -->
+<!--node pkg = "espeleo_localization" name = "pose_constructor" type = "pose_constructor" args="" output="screen">
+</node-->
+<!--Run the node that performs an EKF filter for pose estimation -->
+<node pkg = "espeleo_localization" name = "state_estimator_espeleo" type = "state_estimator_espeleo" args="" output="screen" >
+	<param name="log_path" type="string" value="$(find espeleo_localization)/log_files/" />
+</node>
+
+<!--launch-prefix="xterm -e"-->
 
 </launch>
