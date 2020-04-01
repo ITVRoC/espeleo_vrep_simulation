@@ -125,3 +125,8 @@ $ catkin build
 
 Any questions, please contact-me in ``f.rocha41@gmail.com``.
 All pull requests are welcome and desired!!!
+
+
+## V-Rep x CoppeliaSim problems
+
+- If you switch from V-Rep to the new CoppeliaSim version, make sure that your EspeleoRobô's lua script contains the following line `if (moduleName=='ROSInterface') then`, instead of `if (moduleName=='ROSInterface') then`. The difference is just the capital letters in ROS.
