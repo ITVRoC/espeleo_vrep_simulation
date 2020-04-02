@@ -1,8 +1,37 @@
-# EspeleoRobo V-REP/ROS Simulator
+# EspeleoRobô CoppeliaSim/ROS Simulator
 ----------------------
-This repository contains all needed files for simulating EspeleoRobo in V-REP.
+This repository contains the models to simulate EspeleoRobô in CoppeliaSim (the old V-REP).
 
-## EspeleoRobo models included:
+## Firs step:
+
+Make sure you have CoppeliaSim properly installed. Please go to the README of the package https://github.com/ITVRoC/sim_ros_interface. Follow the instructions therein come back here.
+
+**Test if everything is working:**
+
+Clone these packages in your catkin workspace `src` folder:
+
+- espeleo_control: `git clone https://github.com/ITVRoC/espeleo_control.git`
+- espeleo_decawave: `git clone https://github.com/ITVRoC/espeleo_decawave.git`
+- espeleo_localization: `git clone https://github.com/ITVRoC/espeleo_localization.git`
+- espeleo_planning: `git clone https://github.com/ITVRoC/espeleo_planning.git`
+- imu_complemenntary_fiter: `git clone https://github.com/ITVRoC/imu_complementary_filter.git`
+- ros_eposmcd (note: this should already installed installed): `git clone https://github.com/ITVRoC/ros_eposmcd.git`
+
+Compile:
+
+`catkin build`
+
+After running rosmaster (`roscore`), go to your `src` folder and run CoppeliaSim with a defined scene:
+
+`coppeliasim espeleo_vrep_simulation/vrep_models/scenarios/terrain_tree/terrain_tree.ttt`
+
+Play the simulator ad run a simple keyboard controller to check if everything is working:
+
+`roslaunch espeleo_vrep_simulation keyboard.launch`
+
+
+
+## EspeleoRobô models included:
 - 6 legs
 - 6 wheels
 - 6 star shaped wheels
@@ -18,7 +47,6 @@ This repository contains all needed files for simulating EspeleoRobo in V-REP.
 
 
 ## List of nodes
-
 
 - `imu_basic_node.py` This node captures information from the gyro and the accelerometer and publishes a imu raw topic. OBS: the complementary filter in the package `imu_complementary_filter` should also be used to generate the quaternion data of the IMU.
 
@@ -64,19 +92,14 @@ The simulated models behave like the real robot, emulating its topics and servic
 - `/vrep_ros_interface/ros_eposmcd/request_velocity`  (message type:`ros_eposmcd_msgs/maxon_telemetry`): Request a desired motor velocity in **[rad/s]**.
 
 
+## Contact
+
+Any questions, please contact-me in ``adrianomcr18@gmail.com``.
+
 
 
 
 <!--
-## Launch files
-
-The following scripts must be calles after the roscore and vrep are runned (in this order)
-
-**Topics:**
-
-- `basic.launch`: This script runs the most basic files that preares the robot to receive a reference path.
-- `keyboard.launch`: This script runs the basic files to enable to robot be controlled with the keyboard. -->
-
 
 ## V-REP
 
@@ -130,3 +153,5 @@ All pull requests are welcome and desired!!!
 ## V-Rep x CoppeliaSim problems
 
 - If you switch from V-Rep to the new CoppeliaSim version, make sure that your EspeleoRobô's lua script contains the following line `if (moduleName=='ROSInterface') then`, instead of `if (moduleName=='ROSInterface') then`. The difference is just the capital letters in ROS.
+
+-->
