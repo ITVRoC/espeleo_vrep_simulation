@@ -8,7 +8,7 @@ Make sure you have CoppeliaSim properly installed. Please go to the README of th
 
 **Test if everything is working:**
 
-Clone these packages in your catkin workspace `src` folder:
+Clone these packages in your catkin workspace `src` (example: `~/catkin_ws/src`) folder:
 
 - espeleo_control: `git clone https://github.com/ITVRoC/espeleo_control.git`
 - espeleo_decawave: `git clone https://github.com/ITVRoC/espeleo_decawave.git`
@@ -21,15 +21,19 @@ Compile:
 
 `catkin build`
 
+Resource your workspace:
+
+`source ~/catkin_ws/devel/setup.bash`
+
 After running rosmaster (`roscore`), go to your `src` folder and run CoppeliaSim with a defined scene:
 
-`coppeliasim espeleo_vrep_simulation/vrep_models/scenarios/terrain_tree/terrain_tree.ttt`
+`coppeliasim ~/catkin_ws/src/espeleo_vrep_simulation/vrep_models/scenarios/terrain_tree/terrain_tree.ttt`
 
 Play the simulator ad run a simple keyboard controller to check if everything is working:
 
 `roslaunch espeleo_vrep_simulation keyboard.launch`
 
-
+Note: Replace `~/catkin_ws` if you have a different path to your catkin workspace.
 
 ## EspeleoRobô models included:
 - 6 legs
