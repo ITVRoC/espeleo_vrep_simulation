@@ -65,23 +65,6 @@ Install Tutorial Coppeliasim - Espeleo Simulation
 	$ catkin build
 ```
 
-
-**OBS:** If you got the following error:
-
-```
-print('error: program "{0}" is missing (hint: try "sudo apt install {0}")'.format(what), file=sys.stderr)
-```
-
-Change the folder `programming/libPlugin` from your COPPELIASIM_ROOT_DIR for the following [libPlugin](https://github.com/CoppeliaRobotics/libPlugin) and compile again:
-
-
-```
-$ cd $COPPELIASIM_ROOT_DIR/programming
-$ sudo rm -r libPlugin
-$ git clone https://github.com/CoppeliaRobotics/libPlugin.git
-```
-
-
 - 8 - If your compilation finished succesfully, the library "libv_repExtRosInterface.so" compiled correctly. 
 	This library makes CoppeliaSim recognize the ROS enviroment in your machine. Now, copy this library to the CoppeliaSim directory:
 	
@@ -134,6 +117,24 @@ These files are inside the interface package. Besides this, it is necessary to a
 
 After the edition of these files to add new elements to the library, a new recompilation and copy of the library must be done. So every time you add a new message, this process must be repeated.
 	
+## Troubleshooting
+
+- If you got the following error:
+
+```
+print('error: program "{0}" is missing (hint: try "sudo apt install {0}")'.format(what), file=sys.stderr)
+```
+
+Change the folder `programming/libPlugin` from your COPPELIASIM_ROOT_DIR for the following [libPlugin](https://github.com/CoppeliaRobotics/libPlugin) and compile again:
+
+
+```
+$ cd $COPPELIASIM_ROOT_DIR/programming
+$ sudo rm -r libPlugin
+$ git clone https://github.com/CoppeliaRobotics/libPlugin.git
+```
+
+
 
 ## Contact
 
