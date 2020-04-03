@@ -37,11 +37,8 @@ Install Tutorial Coppeliasim - Espeleo Simulation
 
 
 ```sh
-$ echo "alias coppelia=$COPPELIASIM_ROOT_DIR/coppeliaSim.sh" >> ~/.bashrc
-```
-
-```sh
- $ source ~/.bashrc
+	$ echo "alias coppelia=$COPPELIASIM_ROOT_DIR/coppeliaSim.sh" >> ~/.bashrc
+	$ source ~/.bashrc
 ```
 
 - 4 - Test if the program is working on terminal by:
@@ -64,12 +61,8 @@ $ echo "alias coppelia=$COPPELIASIM_ROOT_DIR/coppeliaSim.sh" >> ~/.bashrc
 - 7 - Use "catkin build" to compile your packages. To do so, you must "catkin clean", then "catkin build"
 
 ```sh
-
-$ catkin clean
-```
-		
-```sh		
-$ catkin build
+	$ catkin clean		
+	$ catkin build
 ```
 
 
