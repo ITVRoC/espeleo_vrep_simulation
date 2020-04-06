@@ -1,0 +1,6 @@
+<launch>
+	<!-- ESPELEO_LOCOMOTION -->
+	<node name="web_video_server" pkg="web_video_server" type="web_video_server" />
+    <node name="espeleo" pkg="espeleo_bringup" type="dyn_reconfigure_server.py" respawn="true" />
+    <include file="$(find espeleo_locomotion)/launch/espeleo_locomotion_differential.launch"></include>
+</launch>
