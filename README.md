@@ -48,7 +48,7 @@ Note: Replace `~/catkin_ws` if you have a different path to your catkin workspac
 - terrain plus tree plus espeleorobo
 - paleotoca
 - campinho (Motocross field)
-
+- DARPA SubT Challenge scene
 
 ## List of nodes
 
