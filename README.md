@@ -195,7 +195,11 @@ $ roslaunch espeleo_vrep_simulation espeleo_sim.launch
 ```
 
  And press play in the simulation. 
-
+ 
+ You can launch the GUI with the following command:
+ ```sh
+$ roslaunch espeleo_gui gui_simulation.launch
+```
 
 
 ## Contact
