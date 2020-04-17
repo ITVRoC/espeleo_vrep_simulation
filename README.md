@@ -134,6 +134,68 @@ $ sudo rm -r libPlugin
 $ git clone https://github.com/CoppeliaRobotics/libPlugin.git
 ```
 
+# Espeleo Simulation
+
+
+To run the EspeleoRobo Coppelia simulation, first, clone this repository and other packages needed in your workspace:
+```sh
+$ git clone https://github.com/ITVRoC/espeleo_vrep_simulation.git
+$ git clone https://github.com/ITVRoC/espeleo_locomotion.git
+$ git clone https://github.com/ITVRoC/espeleo_description.git
+$ git clone https://github.com/ITVRoC/espeleo_bringup.git
+```
+### Espeleo Locomotion
+The espeleo_locomotion package is responsible for control the movement of the robot, sending the RPM for each wheel, according to the kinematic model used. This package is also responsible for loading some mechanical parameters used in the simulation, like the value of each wheel reduction.   The simulation will not run without those parameters.
+
+### Espeleo description
+Espeleo description package is responsible for the EspeleoRobo TF tree. The simulation only provides the frames of each sensor and the relation of the "base_link" frame to the "world" frame. 
+
+### Espeleo Bringup
+Espeleo bringup is responsible to start the dynamic reconfigure server, allowing the use of some functionalities like "turbo button" and changing the direction of the movement. 
+
+## Optional packages
+
+### Espeleo GUI
+
+Espeleo_gui is a control interface that allows the user to get the motor's current feedback, front and back camera streams, record videos, bags and change some parameters of EspeleoRobo. 
+```sh
+$ git clone https://github.com/ITVRoC/espeleo_gui.git
+```
+
+### Espeleo Teleop
+ 
+This package has nodes especially adapted that allow the use of a keyboard or joystick to control EspeleoRobo. 
+```sh
+$ git clone https://github.com/ITVRoC/espeleo_teleop.git
+```
+
+## How to run
+After compiling all the needed packages, go to espeleo_vrep_simulation and change the branch to espeleo2_vrep and compile the package:
+```sh
+$ roscd espeleo_vrep_simulation
+$ git checkout espeleo2_vrep
+$ catkin build espeleo_vrep_simulation
+```
+
+Then, use these commands to run the simulation:
+
+```sh
+$ roscore
+$ coppelia
+```
+
+In Coppelia, open the  EspeleoRobo scene or model. Select "**File**" and "**Open new scene**".
+
+Search for "**_espeleo_6wheel_ITV.ttt_**", located in Folder : "**espeleo_vrep_simulation/vrep_models/scenarios/ITVRoC/**
+
+Then:
+
+```sh
+$ roslaunch espeleo_vrep_simulation espeleo_sim.launch
+```
+
+ And press play in the simulation. 
+
 
 
 ## Contact
