@@ -38,6 +38,8 @@ Note: Replace `~/catkin_ws` if you have a different path to your catkin workspac
 ## EspeleoRobô models included:
 - 6 legs
 - 6 wheels
+- 6 wheels plus imu, kinect and velodyne
+- 6 wheels plus imu, kinect and hokuyo spinning
 - 6 star shaped wheels
 - 4 wheels and 2 legs
 - 4 wheels 2 legs plus imu and kinect
