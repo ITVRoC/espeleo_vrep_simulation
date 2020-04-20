@@ -4,7 +4,7 @@
 
 
 <!--Run the rviz for better visualization-->
-<node pkg = "rviz" name = "rviz" type = "rviz" args="-d $(find espeleo_planning)/rviz/config_cylinder.rviz" output="screen">
+<node pkg = "rviz" name = "rviz" type = "rviz" args="-d $(find espeleo_vrep_simulation)/rviz/config_cave.rviz" output="screen">
 </node>
 
 <!--Run the node that plots stuff on rviz-->

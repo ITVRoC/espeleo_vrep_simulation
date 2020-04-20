@@ -5,6 +5,8 @@ This repository contains all needed files for simulating EspeleoRobo in V-REP.
 ## EspeleoRobo models included:
 - 6 legs
 - 6 wheels
+- 6 wheels plus imu, kinect and velodyne
+- 6 wheels plus imu, kinect and hokuyo spinning
 - 6 star shaped wheels
 - 4 wheels and 2 legs
 - 4 wheels 2 legs plus imu and kinect
@@ -15,8 +17,12 @@ This repository contains all needed files for simulating EspeleoRobo in V-REP.
 - terrain plus tree plus espeleorobo
 - paleotoca
 - campinho (Motocross field)
+<<<<<<< HEAD
 
 ## How to Install CoppeliaSim with ROS Bridge
+=======
+- DARPA SubT Challenge scene
+>>>>>>> b2746a046dad7ad97d7f789bbaa55c488cd792b9
 
 Install Tutorial Coppeliasim - Espeleo Simulation
 
