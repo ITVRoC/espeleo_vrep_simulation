@@ -143,15 +143,29 @@ $ git clone https://github.com/ITVRoC/espeleo_vrep_simulation.git
 $ git clone https://github.com/ITVRoC/espeleo_locomotion.git
 $ git clone https://github.com/ITVRoC/espeleo_description.git
 $ git clone https://github.com/ITVRoC/espeleo_bringup.git
+$ git clone https://github.com/ITVRoC/espeleo_msg_srv.git
 ```
+Also clone or install via apt the ROS Web Video Server:
+```sh
+sudo apt install ros-<distro>-web-video-server (RECOMMENDED)
+or
+git clone https://github.com/RobotWebTools/web_video_server.git
+```
+
 ### Espeleo Locomotion
 The espeleo_locomotion package is responsible for control the movement of the robot, sending the RPM for each wheel, according to the kinematic model used. This package is also responsible for loading some mechanical parameters used in the simulation, like the value of each wheel reduction.   The simulation will not run without those parameters.
 
-### Espeleo description
+### Espeleo Description
 Espeleo description package is responsible for the EspeleoRobo TF tree. The simulation only provides the frames of each sensor and the relation of the "base_link" frame to the "world" frame. 
 
 ### Espeleo Bringup
 Espeleo bringup is responsible to start the dynamic reconfigure server, allowing the use of some functionalities like "turbo button" and changing the direction of the movement. 
+
+### Espeleo Msg and Srv
+Espeleo messages and services contains espeleo's messages and services data structures.
+
+### Web Video Server
+Required package to convert ROS Streams to HTTP, allowing to use the robot's cameras in simulation in Espeleo's GUI.
 
 ## Optional packages
 
