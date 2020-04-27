@@ -21,6 +21,7 @@ This repository contains all needed files for simulating EspeleoRobo in V-REP.
 - paleotoca
 - campinho (Motocross field)
 - DARPA SubT Challenge scene
+- DARPA SubT Urban Scene
 
 ## How to Install CoppeliaSim with ROS Bridge
 
