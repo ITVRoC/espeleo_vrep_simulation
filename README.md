@@ -23,6 +23,7 @@ This repository contains all needed files for simulating EspeleoRobo in V-REP.
 - DARPA SubT Challenge scene
 - DARPA SubT Urban Scene
 - DARPA SubT Edgar Mine Scene
+- walls (include espeleo with hokuyo)
 
 ## How to Install CoppeliaSim with ROS Bridge
 
