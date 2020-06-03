@@ -33,7 +33,7 @@ class image_converter:
         try:
             msg = self.bridge.cv2_to_imgmsg(flipped_img, encoding)
             msg.header.stamp = rospy.Time.now()
-            msg.header.frame_id = "d435i_link"
+            msg.header.frame_id = "d435i_sim_link"
             self.pub_color.publish(msg)
         except CvBridgeError as e:
             rospy.logerr(e)
@@ -49,7 +49,7 @@ class image_converter:
         try:
             msg = self.bridge.cv2_to_imgmsg(flipped_img, encoding)
             msg.header.stamp = rospy.Time.now()
-            msg.header.frame_id = "d435i_link"
+            msg.header.frame_id = "d435i_sim_link"
             self.pub_depth.publish(msg)
         except CvBridgeError as e:
             rospy.logerr(e)
