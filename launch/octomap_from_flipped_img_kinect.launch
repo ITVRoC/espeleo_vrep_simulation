@@ -1,0 +1,29 @@
+<launch>
+    <!--
+        Generate an Octomap from simulated kinect
+        flip_depth_img_kinetic_vrep.py is needed since the RGB and depth image comming from VREP
+        are flipped horizontally, and its easier to flip the original image before converting it into pointcloud2
+
+        depth_to_pointcloudrgb allows to recreate a pointcloud2 message from the RGB and depth 2D images 
+    -->
+
+    <node pkg="espeleo_vrep_simulation" type="flip_depth_img_kinetic_vrep.py" name="flip_depth_img_kinetic_vrep"></node>
+
+    <node pkg="nodelet" type="nodelet" args="manager" name="depth_image_to_pointcloud_manager" output="screen"/>
+    <node pkg="nodelet" type="nodelet" name="depth_to_pointcloudrgb" args="load depth_image_proc/point_cloud_xyzrgb depth_image_to_pointcloud_manager" output="screen" respawn="true">
+        <remap from="rgb/image_rect_color" to="/camera/color_flip"/>
+        <remap from="depth_registered/image_rect" to="/camera/depth_flip"/>
+        <remap from="rgb/camera_info" to="/camera/camera_info"/>
+        <param name="queue_size" type="int" value="1"/>
+    </node>
+
+    <node pkg="octomap_server" type="octomap_server_node" name="octomap_server">
+        <param name="resolution" value="0.05" />
+        <param name="publish_free_space" value="true" />
+        <param name="frame_id" type="string" value="odom" />
+        <param name="sensor_model/max_range" value="3.49" />
+        <param name="latch" value="true"/>
+
+        <remap from="cloud_in" to="/depth_registered/points" />
+    </node>
+</launch>
