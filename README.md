@@ -143,6 +143,18 @@ $ sudo rm -r libPlugin
 $ git clone https://github.com/CoppeliaRobotics/libPlugin.git
 ```
 
+- If you got any of the following errors:
+![cmake_error](https://user-images.githubusercontent.com/51409770/86668418-fe5b9280-bfc8-11ea-85cd-cbf4b64655b5.png)
+![cmake_error2](https://user-images.githubusercontent.com/51409770/86668488-0d424500-bfc9-11ea-8e4b-18295ae9742e.png)
+
+Delete the previously downloaded repository.
+```
+sudo rm -r ~/catkin_ws/src/simExtROSInterface
+```
+And replace it with the old version.
+```
+git clone https://github.com/ITVRoC/simExtROSInterface.git
+```
 # Espeleo Simulation
 
 

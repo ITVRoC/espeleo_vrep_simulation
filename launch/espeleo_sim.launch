@@ -1,6 +1,19 @@
 <launch>
+
 	<!-- ESPELEO_LOCOMOTION -->
-	<node name="web_video_server" pkg="web_video_server" type="web_video_server" />
+    <arg name = "model" default = ""/>
+    <param name="robot_description" textfile="$(find espeleo_description)/urdf/espeleo2$(arg model).urdf" />
+
+  <!--GUI used to send fake joint values-->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="false"/>
+  </node>
+ 
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"/>
+
+
+    <node name="web_video_server" pkg="web_video_server" type="web_video_server" />
     <node name="espeleo" pkg="espeleo_bringup" type="dyn_reconfigure_server.py" respawn="true" />
     <include file="$(find espeleo_locomotion)/launch/espeleo_locomotion_differential.launch"></include>
 	<rosparam file="$(find espeleo_vrep_simulation)/cfg/espeleo_sim_parameters.yaml" command="load" ns=""/>
