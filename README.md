@@ -144,6 +144,7 @@ $ git clone https://github.com/CoppeliaRobotics/libPlugin.git
 ```
 
 - If you got any of the following errors:
+
 ![cmake_error](https://user-images.githubusercontent.com/51409770/86668418-fe5b9280-bfc8-11ea-85cd-cbf4b64655b5.png)
 ![cmake_error2](https://user-images.githubusercontent.com/51409770/86668488-0d424500-bfc9-11ea-8e4b-18295ae9742e.png)
 
@@ -191,6 +192,17 @@ Required package to convert ROS Streams to HTTP, allowing to use the robot's cam
 
 ### Coppeliasim Plugin Velodyne
 Coppeliasim Plugin Velodyne is responsible for publishing the velodyne point cloud from a C++ plugin, increasing the simulation performance.
+
+#### To use
+After cloning this repository and compiling with `catkin make` or `catkin build`, the plugin lib needs to be copied into the CoppeliaSim folder:
+
+```sh
+$ cp ~/catkin_ws/devel/.private/coppeliasim_plugin_velodyne/lib/libv_repExtRosVelodyne.so $COPPELIASIM_ROOT_DIR
+```
+
+The scenes in this repository already have the other configurations.
+
+If you want to create a new scene with the plugin follow the steps of the link - https://github.com/ITVRoC/coppeliasim_plugin_velodyne.
 
 
 ## Optional packages
