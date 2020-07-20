@@ -165,6 +165,7 @@ $ git clone https://github.com/ITVRoC/espeleo_locomotion.git
 $ git clone https://github.com/ITVRoC/espeleo_description.git
 $ git clone https://github.com/ITVRoC/espeleo_bringup.git
 $ git clone https://github.com/ITVRoC/espeleo_msg_srv.git
+$ git clone https://github.com/ITVRoC/coppeliasim_plugin_velodyne.git
 ```
 Also clone or install via apt the ROS Web Video Server:
 ```sh
@@ -188,6 +189,10 @@ Espeleo messages and services contains espeleo's messages and services data stru
 ### Web Video Server
 Required package to convert ROS Streams to HTTP, allowing to use the robot's cameras in simulation in Espeleo's GUI.
 
+### Coppeliasim Plugin Velodyne
+Coppeliasim Plugin Velodyne is responsible for publishing the velodyne point cloud from a C++ plugin, increasing the simulation performance.
+
+
 ## Optional packages
 
 ### Espeleo GUI
@@ -207,9 +212,6 @@ $ git clone https://github.com/ITVRoC/espeleo_teleop.git
 ### Coppeliasim Plugin Velodyne
 This package publishes the velodyne point cloud from a C++ plugin, increasing the simulation performance.
 
-```sh
-$ git clone https://github.com/ITVRoC/coppeliasim_plugin_velodyne.git
-```
 
 ## How to run
 After compiling all the needed packages, go to espeleo_vrep_simulation and change the branch to espeleo2_vrep and compile the package:
