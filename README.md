@@ -223,14 +223,7 @@ $ git clone https://github.com/ITVRoC/espeleo_teleop.git
 
 
 ## How to run
-After compiling all the needed packages, go to espeleo_vrep_simulation and change the branch to espeleo2_vrep and compile the package:
-```sh
-$ roscd espeleo_vrep_simulation
-$ git checkout espeleo2_vrep
-$ catkin build espeleo_vrep_simulation
-```
-
-Then, use these commands to run the simulation:
+Use these commands to run the simulation:
 
 ```sh
 $ roscore
