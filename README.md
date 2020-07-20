@@ -209,9 +209,6 @@ This package has nodes especially adapted that allow the use of a keyboard or jo
 $ git clone https://github.com/ITVRoC/espeleo_teleop.git
 ```
 
-### Coppeliasim Plugin Velodyne
-This package publishes the velodyne point cloud from a C++ plugin, increasing the simulation performance.
-
 
 ## How to run
 After compiling all the needed packages, go to espeleo_vrep_simulation and change the branch to espeleo2_vrep and compile the package:
