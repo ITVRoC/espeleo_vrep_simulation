@@ -81,12 +81,28 @@ Install Tutorial Coppeliasim - Espeleo Simulation
 		$ cp ~/catkin_ws/devel/lib/libsimExtROSInterface.so $COPPELIASIM_ROOT_DIR
 		
 		
-- 9 - Everything is ready to run. To test the communication, run the ROS master:
+- 9 - It's necessary to install the package Coppeliasim Plugin Velodyne which is responsible for publishing the velodyne point cloud from a C++ plugin, increasing the simulation performance.
+
+	Clone the repository:
+
+		$ git clone https://github.com/ITVRoC/coppeliasim_plugin_velodyne.git
+
+	After cloning this repository and compiling with `catkin make` or `catkin build`, the plugin lib needs to be copied into the CoppeliaSim folder:
+
+		$ cp ~/catkin_ws/devel/.private/coppeliasim_plugin_velodyne/lib/libv_repExtRosVelodyne.so $COPPELIASIM_ROOT_DIR
+
+	The scenes in this repository already have the other configurations.
+
+	If you want to create a new scene with the plugin follow the steps of the link - https://github.com/ITVRoC/coppeliasim_plugin_velodyne.
+
+
+
+- 10 - Everything is ready to run. To test the communication, run the ROS master:
 
 
 		$ roscore
 
-- 10 - Now run CoppeliaSim:
+- 11 - Now run CoppeliaSim:
 
 
 		$ coppelia
@@ -102,7 +118,7 @@ Note that there are multiple init messages from CoppeliaSim on terminal. An indi
 ```
 
 
-- 11 - To confirm the interaction between ROS and CoppeliaSim, play the empty scene in the begin of the program. In other terminal type:
+- 12 - To confirm the interaction between ROS and CoppeliaSim, play the empty scene in the begin of the program. In other terminal type:
 
 
 		$ rostopic list
@@ -166,7 +182,6 @@ $ git clone https://github.com/ITVRoC/espeleo_locomotion.git
 $ git clone https://github.com/ITVRoC/espeleo_description.git
 $ git clone https://github.com/ITVRoC/espeleo_bringup.git
 $ git clone https://github.com/ITVRoC/espeleo_msg_srv.git
-$ git clone https://github.com/ITVRoC/coppeliasim_plugin_velodyne.git
 ```
 Also clone or install via apt the ROS Web Video Server:
 ```sh
@@ -189,20 +204,6 @@ Espeleo messages and services contains espeleo's messages and services data stru
 
 ### Web Video Server
 Required package to convert ROS Streams to HTTP, allowing to use the robot's cameras in simulation in Espeleo's GUI.
-
-### Coppeliasim Plugin Velodyne
-Coppeliasim Plugin Velodyne is responsible for publishing the velodyne point cloud from a C++ plugin, increasing the simulation performance.
-
-#### To use
-After cloning this repository and compiling with `catkin make` or `catkin build`, the plugin lib needs to be copied into the CoppeliaSim folder:
-
-```sh
-$ cp ~/catkin_ws/devel/.private/coppeliasim_plugin_velodyne/lib/libv_repExtRosVelodyne.so $COPPELIASIM_ROOT_DIR
-```
-
-The scenes in this repository already have the other configurations.
-
-If you want to create a new scene with the plugin follow the steps of the link - https://github.com/ITVRoC/coppeliasim_plugin_velodyne.
 
 
 ## Optional packages
