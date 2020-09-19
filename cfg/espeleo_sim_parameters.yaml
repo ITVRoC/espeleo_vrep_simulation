@@ -1,10 +1,7 @@
- # espeleo simulation parameters
- espeleo_sim: 
+# espeleo simulation parameters
 
-  # Frontal camera frame rate (Hz)
-  front_camera_rate: 1.0
-
-  # Back camera frame rate (Hz)
-  back_camera_rate: 1.0
-
-  
+espeleo_sim: 
+    # Frontal camera frame rate (Hz)
+    front_camera_rate: 0.2
+    # Back camera frame rate (Hz)
+    back_camera_rate: 0.2
