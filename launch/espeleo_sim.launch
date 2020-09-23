@@ -1,7 +1,11 @@
+<?xml version="1.0"?>
+
 <launch>
 
     <include file="$(find espeleo_description)/launch/espeleo_description.launch"/>
     <node pkg="tf" type="static_transform_publisher" name="velodyne_to_os1_map"  args="0 0 0  0 0 0 1 /os1_sensor /velodyneVPL 10" />
+    <node pkg="tf" type="static_transform_publisher" name="os1_sensor_to_lidar"  args="0 0 0  0 0 1 0 /os1_sensor /os1_lidar 10" />
+
   
     <node name="web_video_server" pkg="web_video_server" type="web_video_server" />
     <node name="espeleo" pkg="espeleo_bringup" type="dyn_reconfigure_server.py" respawn="true" />
