@@ -154,5 +154,5 @@ $ roslaunch espeleo_gui gui_simulation.launch
 
 ## Contact
 
-Any questions, please contact-me in ``mateusnazarioc@gmail.com``.
-All pull requests are welcome and desired!!!
+Any questions, please contact ``hector.azpurua@itv.org``.
+Pull requests are welcome (and desired)!
