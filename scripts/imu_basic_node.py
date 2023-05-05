@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import rospy
 from geometry_msgs.msg import Point
 from sensor_msgs.msg import Imu
@@ -124,7 +124,7 @@ def imunode():
     #pointsMarker = send_ellipse_to_rviz()
 
     sleep(0.5)
-    print "IMU initialized!"
+    print ("IMU initialized!")
 
 
     i = 0;

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import rospy
 from geometry_msgs.msg import Point
 from sensor_msgs.msg import Imu
@@ -127,7 +127,7 @@ def imunode():
     rate = rospy.Rate(freq)
 
     sleep(0.5)
-    print "\33[92mXsens emulator initialized!\33[0m"
+    print ("\33[92mXsens emulator initialized!\33[0m")
 
 
     i = 0;
@@ -195,7 +195,7 @@ if __name__ == '__main__':
 
     global LON_0, LAT_0, ALT_0
     try:
-        print "\33[93mLoad initial geolocation: successful\33[0m"
+        print ("\33[93mLoad initial geolocation: successful\33[0m")
         LON_0 = float(sys.argv[2]) #degrees
         LAT_0 = float(sys.argv[1]) #degrees
         ALT_0 = float(sys.argv[3]) #meters
@@ -203,8 +203,8 @@ if __name__ == '__main__':
         LON_0 = -43.0 #degrees
         LAT_0 = -19.0 #degrees
         ALT_0 = 800.0 #meters
-        print "\33[91mFailed to load parameters for initial geolocation !\33[0m"
-        print "\33[93mUsing default:\nLAT_0 = -19.0\nLON_0 = -43.0\nALT_0 = 800.0\n\33[0m"
+        print ("\33[91mFailed to load parameters for initial geolocation !\33[0m")
+        print ("\33[93mUsing default:\nLAT_0 = -19.0\nLON_0 = -43.0\nALT_0 = 800.0\n\33[0m")
 
 
     global EARTH_RADIUS, RAD_TO_DEGREE
