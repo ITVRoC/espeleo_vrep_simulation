@@ -3,7 +3,7 @@
 
 # EspeleoRobo V-REP/ROS Simulation
 ----------------------
-This repository contains all needed files for simulating EspeleoRobo in V-REP. **Tested in Ubuntu 20.04**.
+This repository contains all needed files for simulating EspeleoRobo in V-REP. **Tested in Ubuntu 20.04, ROS-noetic**.
 
 ## EspeleoRobo models included:
 - 6 legs
@@ -78,11 +78,11 @@ git clone https://github.com/ITVRoC/simExtROSInterface.git
 To run the EspeleoRobo Coppelia simulation, first, clone this repository and other packages needed in your workspace:
 ```sh
 $ cd ~/catkin_ws/
-$ git clone -b ubuntu-20.04 --single-branch https://github.com/ITVRoC/espeleo_vrep_simulation.git
-$ git clone -b ubuntu-20.04 --single-branch https://github.com/ITVRoC/espeleo_locomotion.git
-$ git clone -b ubuntu-20.04 --single-branch https://github.com/ITVRoC/espeleo_description.git
-$ git clone -b ubuntu-20.04 --single-branch https://github.com/ITVRoC/espeleo_bringup.git
-$ git clone -b ubuntu-20.04 --single-branch https://github.com/ITVRoC/espeleo_msg_srv.git
+$ git clone -b ros-noetic --single-branch https://github.com/ITVRoC/espeleo_vrep_simulation.git
+$ git clone -b ros-noetic --single-branch https://github.com/ITVRoC/espeleo_locomotion.git
+$ git clone -b ros-noetic --single-branch https://github.com/ITVRoC/espeleo_description.git
+$ git clone -b ros-noetic --single-branch https://github.com/ITVRoC/espeleo_bringup.git
+$ git clone -b ros-noetic --single-branch https://github.com/ITVRoC/espeleo_msg_srv.git
 ```
 
 Also clone or install via apt the ROS Web Video Server:
@@ -114,7 +114,7 @@ Required package to convert ROS Streams to HTTP, allowing to use the robot's cam
  
 This package has nodes especially adapted that allow the use of a keyboard or joystick to control EspeleoRobo. 
 ```sh
-$ git clone -b ubuntu-20.04 --single-branch https://github.com/ITVRoC/espeleo_teleop.git
+$ git clone -b ros-noetic --single-branch https://github.com/ITVRoC/espeleo_teleop.git
 ```
 
 
