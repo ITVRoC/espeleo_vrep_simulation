@@ -3,7 +3,7 @@
 
 # EspeleoRobo V-REP/ROS Simulation
 ----------------------
-This repository contains all needed files for simulating EspeleoRobo in V-REP. **Tested in Ubuntu 16.04**. For other Ubuntu versions such as 18.04 this repo branch **is experimental**.
+This repository contains all needed files for simulating EspeleoRobo in V-REP. **Tested in Ubuntu 20.04**.
 
 ## EspeleoRobo models included:
 - 6 legs
@@ -25,10 +25,9 @@ This repository contains all needed files for simulating EspeleoRobo in V-REP. *
 - DARPA SubT Edgar Mine Scene
 - walls (include espeleo with hokuyo)
 
-## How to Install CoppeliaSim with ROS Bridge under Ubuntu 16.04
+## How to Install CoppeliaSim with ROS Bridge under Ubuntu 20.04
 
-- Version 4.1.0 (recommended): [Tutorial for CoppeliaSim 4.1.0](COPPELIA_4.1.0.md)
-- Version 4.0.0 (previous stable): [Tutorial for CoppeliaSim 4.0.0](COPPELIA_4.0.0.md)
+- Version 4.5.1: [Tutorial for CoppeliaSim 4.5.1](COPPELIA_4.5.1.md)
 
 ## Final Considerations:
 
@@ -68,7 +67,7 @@ $ git clone https://github.com/CoppeliaRobotics/libPlugin.git
 
 Delete the previously downloaded repository.
 ```
-sudo rm -r ~/catkin_ws/src/simExtROSInterface
+sudo rm -r ~/catkin_ws/src/simExROS
 ```
 And replace it with the old version.
 ```
@@ -79,11 +78,11 @@ git clone https://github.com/ITVRoC/simExtROSInterface.git
 To run the EspeleoRobo Coppelia simulation, first, clone this repository and other packages needed in your workspace:
 ```sh
 $ cd ~/catkin_ws/
-$ git clone https://github.com/ITVRoC/espeleo_vrep_simulation.git
-$ git clone https://github.com/ITVRoC/espeleo_locomotion.git
-$ git clone https://github.com/ITVRoC/espeleo_description.git
-$ git clone https://github.com/ITVRoC/espeleo_bringup.git
-$ git clone https://github.com/ITVRoC/espeleo_msg_srv.git
+$ git clone -b ubuntu-20.04 --single-branch https://github.com/ITVRoC/espeleo_vrep_simulation.git
+$ git clone -b ubuntu-20.04 --single-branch https://github.com/ITVRoC/espeleo_locomotion.git
+$ git clone -b ubuntu-20.04 --single-branch https://github.com/ITVRoC/espeleo_description.git
+$ git clone -b ubuntu-20.04 --single-branch https://github.com/ITVRoC/espeleo_bringup.git
+$ git clone -b ubuntu-20.04 --single-branch https://github.com/ITVRoC/espeleo_msg_srv.git
 ```
 
 Also clone or install via apt the ROS Web Video Server:
@@ -109,20 +108,13 @@ Espeleo messages and services contains espeleo's messages and services data stru
 Required package to convert ROS Streams to HTTP, allowing to use the robot's cameras in simulation in Espeleo's GUI.
 
 
-## Optional packages
-
-### Espeleo GUI
-
-Espeleo_gui is a control interface that allows the user to get the motor's current feedback, front and back camera streams, record videos, bags and change some parameters of EspeleoRobo. 
-```sh
-$ git clone https://github.com/ITVRoC/espeleo_gui.git
-```
+## Optional package
 
 ### Espeleo Teleop
  
 This package has nodes especially adapted that allow the use of a keyboard or joystick to control EspeleoRobo. 
 ```sh
-$ git clone https://github.com/ITVRoC/espeleo_teleop.git
+$ git clone -b ubuntu-20.04 --single-branch https://github.com/ITVRoC/espeleo_teleop.git
 ```
 
 
@@ -145,11 +137,6 @@ $ roslaunch espeleo_vrep_simulation espeleo_sim.launch
 ```
 
  And press play in the simulation. 
- 
- You can launch the GUI with the following command:
- ```sh
-$ roslaunch espeleo_gui gui_simulation.launch
-```
 
 
 ## Contact
