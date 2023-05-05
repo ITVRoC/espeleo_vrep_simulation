@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import rospy
 from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
@@ -76,7 +76,7 @@ def send_ellipse_to_rviz():
     points_marker = MarkerArray()
     marker = Marker()
     for p0 in range(1, 628, 1):
-        print "p0 = ", p0
+        print ("p0 = ", p0)
         p = p0 / 100.0
         x = cos(phi) * (a * cos(p)) - sin(phi) * (b * sin(p)) + cx * 1
         y = sin(phi) * (a * cos(p)) + cos(phi) * (b * sin(p)) + cy * 1
@@ -97,7 +97,7 @@ def send_ellipse_to_rviz():
         marker.pose.position.x = x
         marker.pose.position.y = y
         marker.pose.position.z = 0
-        print "marker = ", marker
+        print ("marker = ", marker)
         points_marker.markers.append(marker)
 
     return (points_marker)
