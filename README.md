@@ -116,6 +116,10 @@ This package has nodes especially adapted that allow the use of a keyboard or jo
 ```sh
 $ git clone -b ros-noetic --single-branch https://github.com/ITVRoC/espeleo_teleop.git
 ```
+- back to catkin workspcae and verify if all ros dependencies are installed
+```
+rosdep install --from-paths src --ignore-src -r -y
+```
 
 
 ## How to run
