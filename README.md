@@ -82,7 +82,7 @@ $ git clone -b ros-noetic --single-branch https://github.com/ITVRoC/espeleo_vrep
 $ git clone -b ros-noetic --single-branch https://github.com/ITVRoC/espeleo_locomotion.git
 $ git clone -b ros-noetic --single-branch https://github.com/ITVRoC/espeleo_description.git
 $ git clone -b ros-noetic --single-branch https://github.com/ITVRoC/espeleo_bringup.git
-$ git clone -b ros-noetic --single-branch https://github.com/ITVRoC/espeleo_msg_srv.git
+$ git clone https://github.com/ITVRoC/espeleo_msg_srv.git
 ```
 
 Also clone or install via apt the ROS Web Video Server:
