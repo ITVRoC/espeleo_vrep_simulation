@@ -19,15 +19,15 @@ Install Tutorial Coppeliasim - Espeleo Simulation
 		
 	If everything went well, you must be greeted by the CoppeliaSim simulator main window!
 
-- 4 - Go to your catkin workspace source folder ("~/catkin_ws/src/") and clone recursively the plugin repository. **Note: the simExtROSInterface that works with Ubuntu 16.04 is the coppeliasim-v4.0.0 branch. Until now, we have seen no problems.**
+- 4 - Go to your catkin workspace source folder ("~/catkin_ws/src/") and clone recursively the plugin repository.
 
 		$ cd ~/catkin_ws/src/
 		$ git clone https://github.com/CoppeliaRobotics/simExtROS.git
 		
 - 5 – Install necessary dependencies:
 
-  $ sudo apt install xlstproc
-  $ python3 -m pip install xmlschema
+  		$ sudo apt install xlstproc
+  		$ python3 -m pip install xmlschema
 
 - 6 - Use "catkin build" to compile your packages. To do so, you must "catkin clean", then "catkin build"
 
